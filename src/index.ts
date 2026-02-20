@@ -1,12 +1,12 @@
 /**
- * @tinyland-inc/tinyland-content-types
+ * @tummycrypt/tinyland-content-types
  *
  * Shared content type definitions for content management and ActivityPub federation.
  * This package provides the type layer used by both content services and ActivityPub services.
  *
  * Sub-entry points:
- * - `@tinyland-inc/tinyland-content-types/visibility` - Visibility types and AP addressing
- * - `@tinyland-inc/tinyland-content-types/activitypub` - AP federation content types
+ * - `@tummycrypt/tinyland-content-types/visibility` - Visibility types and AP addressing
+ * - `@tummycrypt/tinyland-content-types/activitypub` - AP federation content types
  */
 
 // ============================================================================

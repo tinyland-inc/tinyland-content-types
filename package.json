@@ -1,5 +1,5 @@
 {
-  "name": "@tinyland-inc/tinyland-content-types",
+  "name": "@tummycrypt/tinyland-content-types",
   "version": "0.1.0",
   "description": "Shared content type definitions for content management and ActivityPub federation",
   "type": "module",
@@ -21,7 +21,10 @@
       "import": "./dist/activitypub/index.js"
     }
   },
-  "files": ["dist", "LICENSE"],
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
@@ -36,5 +39,16 @@
     "typescript": "^5.0.0",
     "vitest": "^4.0.0"
   },
-  "engines": { "node": ">=22.0.0" }
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/tinyland/projects/tinyland.dev.git",
+    "directory": "packages/tinyland-content-types"
+  }
 }
