@@ -15,17 +15,17 @@ import {
 	type ActivityPubAddressing
 } from '../src/visibility/index.js';
 
-// ============================================================================
-// Arbitrary generators for property-based tests
-// ============================================================================
+
+
+
 
 const validVisibilityArb = fc.constantFrom(...CONTENT_VISIBILITY_VALUES);
 
 const urlArb = fc.webUrl();
 
-// ============================================================================
-// migrateVisibility
-// ============================================================================
+
+
+
 
 describe('migrateVisibility', () => {
 	it('should return "public" for undefined input', () => {
@@ -80,7 +80,7 @@ describe('migrateVisibility', () => {
 	});
 
 	it('should default unknown values to "public"', () => {
-		// Suppress console.warn for this test
+		
 		const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 		expect(migrateVisibility('unknown-value')).toBe('public');
 		expect(warnSpy).toHaveBeenCalledWith(
@@ -90,15 +90,15 @@ describe('migrateVisibility', () => {
 	});
 
 	fcTest.prop([validVisibilityArb])('migrateVisibility is idempotent for valid values', (visibility) => {
-		// Valid ContentVisibility values should pass through unchanged
+		
 		const result = migrateVisibility(visibility);
 		expect(migrateVisibility(result)).toBe(result);
 	});
 });
 
-// ============================================================================
-// isValidVisibility
-// ============================================================================
+
+
+
 
 describe('isValidVisibility', () => {
 	it.each(CONTENT_VISIBILITY_VALUES)('should return true for "%s"', (v) => {
@@ -114,9 +114,9 @@ describe('isValidVisibility', () => {
 	});
 });
 
-// ============================================================================
-// getAddressingForVisibility
-// ============================================================================
+
+
+
 
 describe('getAddressingForVisibility', () => {
 	const actorUrl = 'https://example.com/users/alice';
@@ -160,9 +160,9 @@ describe('getAddressingForVisibility', () => {
 	});
 });
 
-// ============================================================================
-// inferVisibilityFromAddressing
-// ============================================================================
+
+
+
 
 describe('inferVisibilityFromAddressing', () => {
 	const followersUrl = 'https://example.com/users/alice/followers';
@@ -208,9 +208,9 @@ describe('inferVisibilityFromAddressing', () => {
 	});
 });
 
-// ============================================================================
-// Round-trip property: getAddressingForVisibility -> inferVisibilityFromAddressing
-// ============================================================================
+
+
+
 
 describe('visibility addressing round-trip', () => {
 	const actorUrl = 'https://example.com/users/alice';
@@ -227,8 +227,8 @@ describe('visibility addressing round-trip', () => {
 	it('round-trips for "private" visibility', () => {
 		const addressing = getAddressingForVisibility('private', actorUrl, followersUrl);
 		const inferred = inferVisibilityFromAddressing(addressing.to, addressing.cc, followersUrl);
-		// Private sends to actorUrl only, which is a specific recipient that is not
-		// the followers URL, so it infers as "direct"
+		
+		
 		expect(inferred).toBe('direct');
 	});
 
@@ -240,9 +240,9 @@ describe('visibility addressing round-trip', () => {
 	});
 });
 
-// ============================================================================
-// isVisibleTo
-// ============================================================================
+
+
+
 
 describe('isVisibleTo', () => {
 	const author = 'alice';
@@ -289,9 +289,9 @@ describe('isVisibleTo', () => {
 	});
 });
 
-// ============================================================================
-// Constants
-// ============================================================================
+
+
+
 
 describe('VISIBILITY_LABELS', () => {
 	it('should have labels for all visibility values', () => {

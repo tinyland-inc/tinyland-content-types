@@ -25,9 +25,9 @@ import {
 	type ProfileFrontmatter
 } from '../src/index.js';
 
-// ============================================================================
-// Helper factories
-// ============================================================================
+
+
+
 
 function makeItem(overrides: Partial<UnifiedContentItem> = {}): UnifiedContentItem {
 	return {
@@ -42,9 +42,9 @@ function makeItem(overrides: Partial<UnifiedContentItem> = {}): UnifiedContentIt
 	};
 }
 
-// ============================================================================
-// Type Guards
-// ============================================================================
+
+
+
 
 describe('type guards', () => {
 	const contentTypes: ContentType[] = ['blog', 'note', 'product', 'event', 'program', 'video', 'profile'];
@@ -75,9 +75,9 @@ describe('type guards', () => {
 	}
 });
 
-// ============================================================================
-// ActivityPub Type Mapping
-// ============================================================================
+
+
+
 
 describe('getContentActivityPubType', () => {
 	it('maps blog to Article', () => {
@@ -148,9 +148,9 @@ describe('getActivityPubContentType', () => {
 	});
 });
 
-// ============================================================================
-// Content URL Helpers
-// ============================================================================
+
+
+
 
 describe('getContentUrl', () => {
 	const baseUrl = 'https://example.com';
@@ -220,9 +220,9 @@ describe('getContentActivityPubId', () => {
 	});
 });
 
-// ============================================================================
-// Content Display Helpers
-// ============================================================================
+
+
+
 
 describe('getContentTitle', () => {
 	it('returns title from frontmatter', () => {
@@ -333,9 +333,9 @@ describe('getContentAuthor', () => {
 	});
 });
 
-// ============================================================================
-// Property-based tests for URL generation
-// ============================================================================
+
+
+
 
 describe('URL generation properties', () => {
 	const contentTypeArb = fc.constantFrom<ContentType>('blog', 'note', 'product', 'event', 'program', 'video', 'profile');
@@ -344,7 +344,7 @@ describe('URL generation properties', () => {
 	fcTest.prop([contentTypeArb, slugArb])('getContentUrl never has double slashes in path', (type, slug) => {
 		const item = makeItem({ type, slug, authorHandle: 'testuser' });
 		const url = getContentUrl(item, 'https://example.com');
-		// After the protocol, there should be no double slashes
+		
 		const pathPart = url.replace('https://', '');
 		expect(pathPart).not.toContain('//');
 	});

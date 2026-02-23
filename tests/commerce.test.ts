@@ -17,9 +17,9 @@ import {
 	type ProductFrontmatter
 } from '../src/frontmatter/product.js';
 
-// ============================================================================
-// getEnabledTransactions
-// ============================================================================
+
+
+
 
 describe('getEnabledTransactions', () => {
 	it('returns only enabled transactions', () => {
@@ -66,9 +66,9 @@ describe('getEnabledTransactions', () => {
 	});
 });
 
-// ============================================================================
-// getTransactionLabel
-// ============================================================================
+
+
+
 
 describe('getTransactionLabel', () => {
 	it('returns custom label when provided', () => {
@@ -101,9 +101,9 @@ describe('getTransactionLabel', () => {
 	});
 });
 
-// ============================================================================
-// TRANSACTION_MAPPINGS
-// ============================================================================
+
+
+
 
 describe('TRANSACTION_MAPPINGS', () => {
 	it('has mappings for all 15 transaction types', () => {
@@ -139,9 +139,9 @@ describe('TRANSACTION_MAPPINGS', () => {
 	});
 });
 
-// ============================================================================
-// getTransactionMapping / requiresExternalUrl / isMonetary
-// ============================================================================
+
+
+
 
 describe('getTransactionMapping', () => {
 	it('returns mapping for valid type', () => {
@@ -196,9 +196,9 @@ describe('getSupportedTransactionTypes', () => {
 	});
 });
 
-// ============================================================================
-// TRANSACTION_LABELS & ICONS
-// ============================================================================
+
+
+
 
 describe('TRANSACTION_LABELS', () => {
 	it('has labels for all transaction types', () => {
@@ -218,9 +218,9 @@ describe('TRANSACTION_ICONS', () => {
 	});
 });
 
-// ============================================================================
-// getPrimaryTransaction
-// ============================================================================
+
+
+
 
 describe('getPrimaryTransaction', () => {
 	it('returns undefined when no transactions', () => {

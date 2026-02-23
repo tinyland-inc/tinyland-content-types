@@ -21,9 +21,9 @@ import {
 	type PublishingRole
 } from '../src/publishing/index.js';
 
-// ============================================================================
-// canTransition
-// ============================================================================
+
+
+
 
 describe('canTransition', () => {
 	it('allows draft -> pending', () => {
@@ -63,9 +63,9 @@ describe('canTransition', () => {
 	});
 });
 
-// ============================================================================
-// canUserTransitionTo
-// ============================================================================
+
+
+
 
 describe('canUserTransitionTo', () => {
 	it('allows contributor to transition to draft', () => {
@@ -96,9 +96,9 @@ describe('canUserTransitionTo', () => {
 	});
 });
 
-// ============================================================================
-// canUserTransition
-// ============================================================================
+
+
+
 
 describe('canUserTransition', () => {
 	it('allows editor to transition from draft to published', () => {
@@ -114,9 +114,9 @@ describe('canUserTransition', () => {
 	});
 });
 
-// ============================================================================
-// getAvailableTransitions
-// ============================================================================
+
+
+
 
 describe('getAvailableTransitions', () => {
 	it('returns correct transitions for contributor from draft', () => {
@@ -139,9 +139,9 @@ describe('getAvailableTransitions', () => {
 	});
 });
 
-// ============================================================================
-// validateScheduling
-// ============================================================================
+
+
+
 
 describe('validateScheduling', () => {
 	it('returns null for valid future scheduling', () => {
@@ -180,9 +180,9 @@ describe('validateScheduling', () => {
 	});
 });
 
-// ============================================================================
-// createVersion
-// ============================================================================
+
+
+
 
 describe('createVersion', () => {
 	it('creates a version with correct fields', () => {
@@ -200,9 +200,9 @@ describe('createVersion', () => {
 	});
 });
 
-// ============================================================================
-// Status helpers
-// ============================================================================
+
+
+
 
 describe('getStatusDescription', () => {
 	it('returns descriptions for all statuses', () => {
@@ -258,9 +258,9 @@ describe('getNextStatus', () => {
 	});
 });
 
-// ============================================================================
-// Type Guards
-// ============================================================================
+
+
+
 
 describe('isPublishingStatus', () => {
 	it('returns true for valid statuses', () => {
@@ -305,9 +305,9 @@ describe('isScheduledPublishing', () => {
 	});
 });
 
-// ============================================================================
-// Constants
-// ============================================================================
+
+
+
 
 describe('STATUS_LABELS', () => {
 	it('has labels for all statuses', () => {
