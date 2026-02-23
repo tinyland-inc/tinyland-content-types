@@ -1,14 +1,14 @@
-/**
- * Gallery Type Definitions
- * For image collections (ActivityPub Image objects)
- * Compatible with Pixelfed federation
- */
+
+
+
+
+
 
 import type { ContentVisibility } from '../visibility/index.js';
 
-/**
- * Single image in a gallery
- */
+
+
+
 export interface GalleryImage {
 	url: string;
 	alt?: string;
@@ -17,45 +17,45 @@ export interface GalleryImage {
 	height?: number;
 	blurhash?: string;
 	thumbnailUrl?: string;
-	focalPoint?: [number, number]; // x, y coordinates for cropping
+	focalPoint?: [number, number]; 
 }
 
-/**
- * Gallery item frontmatter for MDsveX
- */
+
+
+
 export interface GalleryItemFrontmatter {
-	// Required
+	
 	title: string;
 
-	// Images
+	
 	images: GalleryImage[];
-	coverImage?: string; // Primary image URL
+	coverImage?: string; 
 
-	// Publishing
+	
 	publishedAt?: string;
 	updatedAt?: string;
 	visibility?: ContentVisibility;
 	published?: boolean;
 
-	// Author
-	author?: string; // Handle
+	
+	author?: string; 
 
-	// Content
+	
 	description?: string;
 	excerpt?: string;
 
-	// Categorization
+	
 	tags?: string[];
 	categories?: string[];
 
-	// Location (for geotagged photos)
+	
 	location?: {
 		name?: string;
 		latitude?: number;
 		longitude?: number;
 	};
 
-	// Camera/EXIF data
+	
 	camera?: string;
 	lens?: string;
 	aperture?: string;
@@ -63,17 +63,17 @@ export interface GalleryItemFrontmatter {
 	iso?: number;
 	takenAt?: string;
 
-	// Engagement
+	
 	likes?: number;
 	comments?: number;
 
-	// ActivityPub
+	
 	activityPubId?: string;
 }
 
 export interface GalleryItem {
 	frontmatter: GalleryItemFrontmatter;
-	content: string; // Full description
+	content: string; 
 	slug: string;
 	filePath?: string;
 }
@@ -91,9 +91,9 @@ export interface GalleryItemDisplay {
 	likes: number;
 }
 
-/**
- * Gallery collection (album)
- */
+
+
+
 export interface GalleryCollection {
 	name: string;
 	slug: string;
@@ -104,9 +104,9 @@ export interface GalleryCollection {
 	visibility: ContentVisibility;
 }
 
-/**
- * Convert GalleryItem to display format
- */
+
+
+
 export function galleryItemToDisplay(item: GalleryItem): GalleryItemDisplay {
 	const { frontmatter } = item;
 
@@ -124,18 +124,18 @@ export function galleryItemToDisplay(item: GalleryItem): GalleryItemDisplay {
 	};
 }
 
-/**
- * Get responsive image srcset
- */
+
+
+
 export function getImageSrcset(image: GalleryImage, widths: number[] = [320, 640, 1024, 1920]): string {
-	// This would normally generate different sized URLs
-	// For now, return the original URL
+	
+	
 	return widths.map((w) => `${image.url} ${w}w`).join(', ');
 }
 
-/**
- * Calculate aspect ratio from dimensions
- */
+
+
+
 export function getAspectRatio(width: number, height: number): string {
 	const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b));
 	const divisor = gcd(width, height);

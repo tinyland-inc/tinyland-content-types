@@ -1,82 +1,82 @@
-/**
- * Video Type Definitions
- * For standalone video content (ActivityPub Video objects)
- * Compatible with PeerTube federation
- */
+
+
+
+
+
 
 import type { ContentVisibility } from '../visibility/index.js';
 import type { AuthorReference } from './base.js';
 
-/**
- * Video frontmatter for MDsveX
- */
-export interface VideoFrontmatter {
-	// Required
-	title: string;
-	url: string; // Video file URL or embed URL
 
-	// Publishing
+
+
+export interface VideoFrontmatter {
+	
+	title: string;
+	url: string; 
+
+	
 	publishedAt?: string;
 	updatedAt?: string;
 	visibility?: ContentVisibility;
 	published?: boolean;
 
-	// Author
-	/**
-	 * Author reference object containing name, handle, and optional avatar.
-	 * @deprecated String format (handle only) is deprecated. Use AuthorReference object format.
-	 * For backwards compatibility, string values are still accepted but
-	 * will be treated as the author handle.
-	 */
+	
+	
+
+
+
+
+
 	author?: AuthorReference | string;
 
-	// Video metadata
-	duration?: string; // ISO 8601 duration (PT5M30S)
+	
+	duration?: string; 
 	durationSeconds?: number;
 	width?: number;
 	height?: number;
-	aspectRatio?: string; // e.g., "16:9"
+	aspectRatio?: string; 
 
-	// Thumbnails
+	
 	thumbnailUrl?: string;
-	previewUrl?: string; // Animated preview
+	previewUrl?: string; 
 	blurhash?: string;
 
-	// Platform info
+	
 	platform?: 'youtube' | 'peertube' | 'vimeo' | 'self-hosted';
-	videoId?: string; // Platform-specific ID
+	videoId?: string; 
 	embedUrl?: string;
 
-	// Content
+	
 	description?: string;
 	excerpt?: string;
 
-	// Categorization
+	
 	tags?: string[];
 	categories?: string[];
 	language?: string;
 
-	// Licensing
+	
 	license?: string;
 	licenseUrl?: string;
 
-	// Engagement
+	
 	views?: number;
 	likes?: number;
 	comments?: number;
 
-	// PeerTube-specific
+	
 	commentsEnabled?: boolean;
 	downloadEnabled?: boolean;
-	support?: string; // Support/donation info
+	support?: string; 
 
-	// ActivityPub
+	
 	activityPubId?: string;
 }
 
 export interface Video {
 	frontmatter: VideoFrontmatter;
-	content: string; // Full description/transcript
+	content: string; 
 	slug: string;
 	filePath?: string;
 }
@@ -96,9 +96,9 @@ export interface VideoDisplay {
 	visibility: ContentVisibility;
 }
 
-/**
- * Convert Video to display format
- */
+
+
+
 export function videoToDisplay(video: Video): VideoDisplay {
 	const { frontmatter } = video;
 
@@ -120,9 +120,9 @@ export function videoToDisplay(video: Video): VideoDisplay {
 	};
 }
 
-/**
- * Format duration for display
- */
+
+
+
 export function formatDuration(seconds: number): string {
 	const hours = Math.floor(seconds / 3600);
 	const minutes = Math.floor((seconds % 3600) / 60);
@@ -134,9 +134,9 @@ export function formatDuration(seconds: number): string {
 	return `${minutes}:${secs.toString().padStart(2, '0')}`;
 }
 
-/**
- * Parse ISO 8601 duration to seconds
- */
+
+
+
 export function parseDuration(duration: string): number {
 	const match = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
 	if (!match) return 0;

@@ -1,17 +1,17 @@
-/**
- * @tummycrypt/tinyland-content-types
- *
- * Shared content type definitions for content management and ActivityPub federation.
- * This package provides the type layer used by both content services and ActivityPub services.
- *
- * Sub-entry points:
- * - `@tummycrypt/tinyland-content-types/visibility` - Visibility types and AP addressing
- * - `@tummycrypt/tinyland-content-types/activitypub` - AP federation content types
- */
 
-// ============================================================================
-// Visibility (core)
-// ============================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
 export {
 	type ContentVisibility,
 	type LegacyRBACVisibility,
@@ -27,17 +27,17 @@ export {
 	isVisibleTo
 } from './visibility/index.js';
 
-// ============================================================================
-// Frontmatter types (all content types)
-// ============================================================================
+
+
+
 export {
-	// Base
+	
 	type FediverseVisibility,
 	type AuthorReference,
 	type BaseFrontmatter,
 	type ContactFrontmatter,
 	type UserPageFrontmatter,
-	// Blog
+	
 	type VideoEmbed,
 	type Reference,
 	type BlogFrontmatter,
@@ -45,7 +45,7 @@ export {
 	type BlogPostWithStats,
 	type BlogCategory,
 	type BlogAuthor,
-	// Product
+	
 	type ProductVariant,
 	type PhysicalProductDetails,
 	type ProductGalleryImage,
@@ -56,33 +56,33 @@ export {
 	type Product,
 	type ProductDisplay,
 	getPrimaryTransaction,
-	// Profile
+	
 	type LegacyProfileVisibility,
 	type ProfileFrontmatter,
 	type Profile,
 	type ProfileWithStats,
 	type ProfileRole,
 	type ProfileConnection,
-	// Event
+	
 	type EventFrontmatter,
 	type Event,
 	type EventDisplay,
 	type EventContent,
 	type XandikosEvent,
 	type EventWithCalendar,
-	// Note
+	
 	type NoteFrontmatter,
 	type Note,
 	type NoteDisplay,
 	noteToDisplay,
-	// Video
+	
 	type VideoFrontmatter,
 	type Video,
 	type VideoDisplay,
 	videoToDisplay,
 	formatDuration,
 	parseDuration,
-	// Gallery
+	
 	type GalleryImage,
 	type GalleryItemFrontmatter,
 	type GalleryItem,
@@ -93,9 +93,9 @@ export {
 	getAspectRatio
 } from './frontmatter/index.js';
 
-// ============================================================================
-// Unified content model (cross-content operations)
-// ============================================================================
+
+
+
 export {
 	type ContentType,
 	type ActivityPubObjectType,
@@ -105,7 +105,7 @@ export {
 	type ExtendedProductFrontmatter,
 	type ExtendedBlogFrontmatter,
 	type ContentWithRelations,
-	// Type guards
+	
 	isBlogContent,
 	isNoteContent,
 	isProductContent,
@@ -113,22 +113,22 @@ export {
 	isProgramContent,
 	isVideoContent,
 	isProfileContent,
-	// AP type mapping
+	
 	getContentActivityPubType,
 	getActivityPubContentType,
-	// URL helpers
+	
 	getContentUrl,
 	getContentActivityPubId,
-	// Display helpers
+	
 	getContentTitle,
 	getContentExcerpt,
 	getContentImage,
 	getContentAuthor
 } from './unified/index.js';
 
-// ============================================================================
-// Commerce types
-// ============================================================================
+
+
+
 export {
 	type TransactionType,
 	type TransactionMethod,
@@ -156,9 +156,9 @@ export {
 	getSupportedTransactionTypes
 } from './commerce/index.js';
 
-// ============================================================================
-// Content component types
-// ============================================================================
+
+
+
 export {
 	type ProgressVariant,
 	type SeriesPost,
@@ -172,9 +172,9 @@ export {
 	normalizeFrontmatter
 } from './components/index.js';
 
-// ============================================================================
-// Publishing workflow
-// ============================================================================
+
+
+
 export {
 	type PublishingStatus,
 	type PublishingRole,

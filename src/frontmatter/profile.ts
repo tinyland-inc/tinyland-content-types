@@ -1,38 +1,38 @@
-/**
- * Profile Type Definitions
- * For MDsveX frontmatter
- */
+
+
+
+
 
 import type { ContentVisibility } from '../visibility/index.js';
 
-/**
- * Profile-specific visibility values
- * @deprecated Use ContentVisibility instead. Migration:
- * - 'published' -> 'public'
- * - 'draft' -> 'private'
- * - 'private' -> 'private'
- */
+
+
+
+
+
+
+
 export type LegacyProfileVisibility = 'private' | 'draft' | 'published';
 
 export interface ProfileFrontmatter {
-	// Required fields
+	
 	name?: string;
-	displayName?: string; // Alternative to name
-	layout?: 'profile'; // MDsveX layout
+	displayName?: string; 
+	layout?: 'profile'; 
 
-	// Basic information
+	
 	pronouns?: string;
 	role?: string;
-	roles?: string[]; // For multiple roles
+	roles?: string[]; 
 	title?: string;
 	department?: string;
 
-	// Contact information
+	
 	email?: string;
 	phone?: string;
 	discord?: string;
 
-	// Direct social links (alternatives to social.* nested object)
+	
 	website?: string;
 	twitter?: string;
 	linkedin?: string;
@@ -40,15 +40,15 @@ export interface ProfileFrontmatter {
 	instagram?: string;
 	github?: string;
 
-	// Profile details
+	
 	avatar?: string;
 	coverImage?: string;
 	bio?: string;
 	location?: string;
 	joinedDate?: string;
-	birthDate?: string; // For birthday celebrations
+	birthDate?: string; 
 
-	// Social media
+	
 	social?: {
 		twitter?: string;
 		instagram?: string;
@@ -57,67 +57,67 @@ export interface ProfileFrontmatter {
 		github?: string;
 		website?: string;
 		tiktok?: string;
-		email?: string; // Contact email via social
+		email?: string; 
 	};
 
-	// Interests and expertise
+	
 	interests?: string[];
 	expertise?: string[];
-	skills?: string[]; // Alias for expertise
+	skills?: string[]; 
 	tags?: string[];
-	categories?: string[]; // Profile categories
+	categories?: string[]; 
 
-	// Display options
+	
 	featured?: boolean;
-	/**
-	 * Profile visibility (ActivityPub-compatible)
-	 * MIGRATION: 'published' -> 'public', 'draft' -> 'private'
-	 * Legacy values are still accepted but will be migrated at runtime
-	 */
+	
+
+
+
+
 	visibility?: ContentVisibility | LegacyProfileVisibility;
 	displayOrder?: number;
-	slug?: string; // URL slug - can override filename
-	published?: boolean; // Legacy: for backwards compatibility
-	hidden?: boolean; // Legacy: for backwards compatibility
+	slug?: string; 
+	published?: boolean; 
+	hidden?: boolean; 
 
-	// Additional date fields
-	publishedAt?: string; // Publication date
-	updatedAt?: string; // Last update date
-	imageUrl?: string; // Alternative to avatar
+	
+	publishedAt?: string; 
+	updatedAt?: string; 
+	imageUrl?: string; 
 
-	// Availability (flexible structure)
+	
 	availability?: {
 		mentoring?: boolean;
 		volunteering?: boolean;
 		speaking?: boolean;
 		collaboration?: boolean;
-		// Extended availability fields used by profile pages
+		
 		status?: 'available' | 'limited' | 'unavailable';
 		hours?: string;
 		details?: string;
 	};
 
-	// Additional fields
+	
 	certifications?: string[];
 	languages?: string[];
 	achievements?: string[];
 
-	// Extended profile fields
-	image?: string; // Alias for avatar
-	experience?: string; // Work experience summary
+	
+	image?: string; 
+	experience?: string; 
 	services?: Array<string | {
 		name: string;
 		description?: string;
 		price?: string;
-	}>; // Services offered (flexible: string[] or objects)
+	}>; 
 	testimonials?: Array<{
-		quote?: string; // Legacy field
-		text?: string; // Preferred field for testimonial content
+		quote?: string; 
+		text?: string; 
 		author: string;
 		role?: string;
 		date?: string;
 	}>;
-	contactEmail?: string; // Alias for email
+	contactEmail?: string; 
 }
 
 export interface Profile {

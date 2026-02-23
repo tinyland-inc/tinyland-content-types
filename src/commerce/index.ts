@@ -1,31 +1,31 @@
-/**
- * Commerce & Transaction Types
- * Product transaction methods and Schema.org offer types
- */
 
-// ============================================================================
-// Product Transaction Types (15 supported methods)
-// ============================================================================
 
-/** All supported transaction types */
+
+
+
+
+
+
+
+
 export type TransactionType =
-	| 'inquiry'                // Contact form / email inquiry
-	| 'ebay'                   // eBay listing link
-	| 'etsy'                   // Etsy listing link
-	| 'amazon'                 // Amazon listing link
-	| 'snail-mail'             // Physical mail order
-	| 'monero'                 // Monero cryptocurrency
-	| 'stripe'                 // Stripe payment
-	| 'polar'                  // Polar.sh subscription
-	| 'taler'                  // GNU Taler payment
-	| 'repository'             // Source code repository
-	| 'documentation'          // Documentation link
-	| 'booking'                // Appointment/booking system
-	| 'liberapay'              // Liberapay donations
-	| 'kofi'                   // Ko-fi donations
-	| 'contribute-to-consume'; // Work-trade contribution
+	| 'inquiry'                
+	| 'ebay'                   
+	| 'etsy'                   
+	| 'amazon'                 
+	| 'snail-mail'             
+	| 'monero'                 
+	| 'stripe'                 
+	| 'polar'                  
+	| 'taler'                  
+	| 'repository'             
+	| 'documentation'          
+	| 'booking'                
+	| 'liberapay'              
+	| 'kofi'                   
+	| 'contribute-to-consume'; 
 
-/** Transaction method configuration */
+
 export interface TransactionMethod {
 	type: TransactionType;
 	enabled: boolean;
@@ -36,7 +36,7 @@ export interface TransactionMethod {
 	priority?: number;
 }
 
-/** Type-specific configuration options */
+
 export type TransactionConfig =
 	| InquiryConfig
 	| MarketplaceConfig
@@ -85,7 +85,7 @@ export interface ContributeConfig {
 	instructions?: string;
 }
 
-/** Default labels for transaction types */
+
 export const TRANSACTION_LABELS: Record<TransactionType, string> = {
 	inquiry: 'Inquire',
 	ebay: 'Buy on eBay',
@@ -104,7 +104,7 @@ export const TRANSACTION_LABELS: Record<TransactionType, string> = {
 	'contribute-to-consume': 'Contribute to Access'
 };
 
-/** Icons for transaction types (icon library names) */
+
 export const TRANSACTION_ICONS: Record<TransactionType, string> = {
 	inquiry: 'mdi:email-outline',
 	ebay: 'simple-icons:ebay',
@@ -123,21 +123,21 @@ export const TRANSACTION_ICONS: Record<TransactionType, string> = {
 	'contribute-to-consume': 'mdi:hand-heart-outline'
 };
 
-/** Helper to get enabled transactions sorted by priority */
+
 export function getEnabledTransactions(methods: TransactionMethod[]): TransactionMethod[] {
 	return methods
 		.filter((m) => m.enabled)
 		.sort((a, b) => (a.priority ?? 99) - (b.priority ?? 99));
 }
 
-/** Helper to get transaction label */
+
 export function getTransactionLabel(method: TransactionMethod): string {
 	return method.label ?? TRANSACTION_LABELS[method.type];
 }
 
-// ============================================================================
-// Schema.org Offer Types (for ActivityPub commerce federation)
-// ============================================================================
+
+
+
 
 export type OfferAvailability =
 	| 'InStock'
@@ -156,15 +156,15 @@ export type PaymentMethod =
 	| 'PaymentService'
 	| 'Subscription'
 	| 'Donation'
-	| 'Exchange'; // For contribute-to-consume
+	| 'Exchange'; 
 
 export interface PriceSpecification {
 	'@type': 'PriceSpecification' | 'UnitPriceSpecification';
 	price: number | string;
-	priceCurrency: string; // ISO 4217 (USD, EUR, XMR)
+	priceCurrency: string; 
 	valueAddedTaxIncluded?: boolean;
-	validFrom?: string; // ISO 8601
-	validThrough?: string; // ISO 8601
+	validFrom?: string; 
+	validThrough?: string; 
 	minPrice?: number;
 	maxPrice?: number;
 }
@@ -172,7 +172,7 @@ export interface PriceSpecification {
 export interface SchemaOffer {
 	'@context': 'https://schema.org';
 	'@type': 'Offer';
-	'@id': string; // ActivityPub ID
+	'@id': string; 
 	name: string;
 	description?: string;
 	url?: string;
@@ -195,15 +195,15 @@ export interface SchemaOffer {
 		image?: string;
 	};
 	acceptedPaymentMethod?: PaymentMethod[];
-	// Extension fields for federation
-	transactionType: string; // Our internal type
-	externalUrl?: string; // Link to external platform
-	requiresAction?: string; // e.g., "contact", "subscribe", "contribute"
+	
+	transactionType: string; 
+	externalUrl?: string; 
+	requiresAction?: string; 
 }
 
-/**
- * Transaction type to schema.org mapping configuration
- */
+
+
+
 export interface TransactionMapping {
 	transactionType: string;
 	schemaType: 'Offer' | 'DonateAction' | 'BuyAction' | 'ReserveAction';
@@ -216,9 +216,9 @@ export interface TransactionMapping {
 	isDonation: boolean;
 }
 
-/**
- * Mapping configuration for all 15 transaction types
- */
+
+
+
 export const TRANSACTION_MAPPINGS: Record<string, TransactionMapping> = {
 	inquiry: {
 		transactionType: 'inquiry',
@@ -387,30 +387,30 @@ export const TRANSACTION_MAPPINGS: Record<string, TransactionMapping> = {
 	}
 };
 
-/**
- * Get transaction mapping configuration
- */
+
+
+
 export function getTransactionMapping(type: string): TransactionMapping | undefined {
 	return TRANSACTION_MAPPINGS[type];
 }
 
-/**
- * Check if transaction type requires external URL
- */
+
+
+
 export function requiresExternalUrl(type: string): boolean {
 	return TRANSACTION_MAPPINGS[type]?.requiresExternalUrl ?? false;
 }
 
-/**
- * Check if transaction type is monetary
- */
+
+
+
 export function isMonetary(type: string): boolean {
 	return TRANSACTION_MAPPINGS[type]?.isMonetary ?? false;
 }
 
-/**
- * Get all supported transaction types
- */
+
+
+
 export function getSupportedTransactionTypes(): string[] {
 	return Object.keys(TRANSACTION_MAPPINGS);
 }
