@@ -11,6 +11,16 @@ export default defineConfig({
     name: 'tinyland-content-types',
     root: __dirname,
     globals: true,
+    exclude: ['**/bazel-*/**', '**/node_modules/**'],
     environment: 'node',
+    pool: 'threads',
+    deps: {
+      interopDefault: true,
+    },
+    server: {
+      deps: {
+        inline: ['@fast-check/vitest'],
+      },
+    },
   },
 });

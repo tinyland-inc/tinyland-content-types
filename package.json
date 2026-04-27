@@ -1,6 +1,7 @@
 {
   "name": "@tummycrypt/tinyland-content-types",
-  "version": "0.2.0",
+  "version": "0.2.2",
+  "packageManager": "pnpm@10.13.1",
   "description": "Shared content type definitions for content management and ActivityPub federation",
   "type": "module",
   "license": "Zlib AND LicenseRef-Tinyland-Proprietary",
@@ -31,13 +32,16 @@
     "clean": "rm -rf dist",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:package": "publint",
+    "prepublishOnly": "pnpm build && pnpm check:package"
   },
   "devDependencies": {
     "@fast-check/vitest": "^0.2.4",
     "@types/node": "^24.6.0",
     "fast-check": "^4.3.0",
     "typescript": "^5.0.0",
+    "publint": "^0.3.18",
     "vitest": "^4.0.0"
   },
   "engines": {
@@ -45,12 +49,14 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
-    "access": "public",
-    "provenance": true
+    "access": "public"
+  },
+  "homepage": "https://github.com/tinyland-inc/tinyland-content-types",
+  "bugs": {
+    "url": "https://github.com/tinyland-inc/tinyland-content-types/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tinyland-inc/tinyland.dev",
-    "directory": "packages/tinyland-content-types"
+    "url": "git+https://github.com/tinyland-inc/tinyland-content-types.git"
   }
 }
