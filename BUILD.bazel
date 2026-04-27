@@ -66,5 +66,5 @@ npm_package(
         ":package.json",
     ],
     package = "@tummycrypt/tinyland-content-types",
-    version = "0.2.0",
+    version = "0.2.2",
 )

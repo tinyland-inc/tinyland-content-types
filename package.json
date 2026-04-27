@@ -1,6 +1,6 @@
 {
   "name": "@tummycrypt/tinyland-content-types",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "packageManager": "pnpm@10.13.1",
   "description": "Shared content type definitions for content management and ActivityPub federation",
   "type": "module",
@@ -49,8 +49,7 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
-    "access": "public",
-    "provenance": true
+    "access": "public"
   },
   "homepage": "https://github.com/tinyland-inc/tinyland-content-types",
   "bugs": {
