@@ -6,6 +6,7 @@
 import type { ContentVisibility } from '../visibility/index.js';
 import type { AuthorReference } from './base.js';
 import type { TransactionMethod, TransactionType } from '../commerce/index.js';
+import type { TinylandSchedulingReference } from '../scheduling/index.js';
 
 
 
@@ -176,6 +177,7 @@ export interface ProductFrontmatter {
 	
 	transactions?: TransactionMethod[];
 	primaryTransaction?: TransactionType;
+	schedulingRef?: TinylandSchedulingReference;
 
 	
 	activityPubId?: string;

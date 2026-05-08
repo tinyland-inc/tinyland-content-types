@@ -20,6 +20,10 @@
     "./activitypub": {
       "types": "./dist/activitypub/index.d.ts",
       "import": "./dist/activitypub/index.js"
+    },
+    "./scheduling": {
+      "types": "./dist/scheduling/index.d.ts",
+      "import": "./dist/scheduling/index.js"
     }
   },
   "files": [

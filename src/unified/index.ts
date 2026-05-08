@@ -17,6 +17,7 @@ import type { ProfileFrontmatter } from '../frontmatter/profile.js';
 import type { VideoEmbed, Reference } from '../frontmatter/blog.js';
 import type { TransactionMethod, TransactionType } from '../commerce/index.js';
 import type { FediverseVisibility } from '../frontmatter/base.js';
+import type { TinylandSchedulingReference } from '../scheduling/index.js';
 
 
 
@@ -78,6 +79,7 @@ export interface ProgramFrontmatter {
 	
 	capacity?: number;
 	registrationRequired?: boolean;
+	schedulingRef?: TinylandSchedulingReference;
 
 	
 	categories?: string[];
@@ -168,6 +170,7 @@ export interface ExtendedProductFrontmatter {
 	
 	transactions?: TransactionMethod[];
 	primaryTransaction?: TransactionType;
+	schedulingRef?: TinylandSchedulingReference;
 
 	
 	relatedPosts?: string[];

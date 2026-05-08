@@ -5,6 +5,7 @@
 
 import type { ContentVisibility } from '../visibility/index.js';
 import type { AuthorReference } from './base.js';
+import type { TinylandSchedulingReference } from '../scheduling/index.js';
 
 export interface EventFrontmatter {
 	
@@ -43,6 +44,7 @@ export interface EventFrontmatter {
 
 	
 	registrationUrl?: string;
+	schedulingRef?: TinylandSchedulingReference;
 	maxAttendees?: number;
 	registrationDeadline?: string;
 
