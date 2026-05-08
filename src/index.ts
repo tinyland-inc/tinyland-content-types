@@ -160,6 +160,39 @@ export {
 
 
 export {
+	type TinylandSchedulingBackend,
+	type TinylandSchedulingAvailabilityMode,
+	type TinylandSchedulingRegistrationMode,
+	type TinylandSchedulingInstanceKind,
+	type TinylandSchedulingInstanceStatus,
+	type TinylandSchedulingPaymentMode,
+	type TinylandSchedulingProvider,
+	type TinylandSchedulingRuntime,
+	type TinylandSchedulingReference,
+	type TinylandSchedulingAuthority,
+	type TinylandSchedulingPublicSurface,
+	type TinylandSchedulingServiceMapping,
+	type TinylandSchedulingPaymentPolicy,
+	type TinylandSchedulingProjection,
+	type TinylandSchedulingOperations,
+	type TinylandSchedulingRepresentedBy,
+	type TinylandSchedulingInstance,
+	SCHEDULING_BACKENDS,
+	SCHEDULING_AVAILABILITY_MODES,
+	SCHEDULING_REGISTRATION_MODES,
+	SCHEDULING_INSTANCE_KINDS,
+	SCHEDULING_INSTANCE_STATUSES,
+	SCHEDULING_PAYMENT_MODES,
+	SCHEDULING_PROVIDERS,
+	SCHEDULING_RUNTIMES,
+	isManagedSchedulingMode,
+	schedulingReferenceRequiresManagedCapability
+} from './scheduling/index.js';
+
+
+
+
+export {
 	type ProgressVariant,
 	type SeriesPost,
 	type ContentAuthor,
