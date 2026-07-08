@@ -66,9 +66,9 @@ export function migrateVisibility(legacy: string | undefined): ContentVisibility
 		case 'direct':
 			return 'direct';
 		default:
-			
-			console.warn(`[Visibility] Unknown visibility value: ${legacy}, defaulting to 'public'`);
-			return 'public';
+			// Fail closed: an unknown/typo visibility value must never widen exposure.
+			console.warn(`[Visibility] Unknown visibility value: ${legacy}, failing closed to 'private'`);
+			return 'private';
 	}
 }
 
