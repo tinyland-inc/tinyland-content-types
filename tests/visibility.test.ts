@@ -79,14 +79,28 @@ describe('migrateVisibility', () => {
 		expect(migrateVisibility('Draft')).toBe('private');
 	});
 
-	it('should default unknown values to "public"', () => {
-		
+	it('should fail closed to "private" for unknown values, not "public"', () => {
+
 		const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
-		expect(migrateVisibility('unknown-value')).toBe('public');
+		expect(migrateVisibility('unknown-value')).toBe('private');
+		expect(migrateVisibility('unknown-value')).not.toBe('public');
+		expect(migrateVisibility('pubic')).toBe('private');
+		expect(migrateVisibility('folowers')).toBe('private');
 		expect(warnSpy).toHaveBeenCalledWith(
 			expect.stringContaining('Unknown visibility value: unknown-value')
 		);
 		warnSpy.mockRestore();
+	});
+
+	fcTest.prop([fc.string()])('never widens an unrecognized value to "public"', (value) => {
+		const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+		try {
+			const knownLegacy = ['public', 'published', 'unlisted', 'members', 'followers', 'admin', 'private', 'draft', 'direct'];
+			fc.pre(value !== '' && !knownLegacy.includes(value.toLowerCase()));
+			expect(migrateVisibility(value)).toBe('private');
+		} finally {
+			warnSpy.mockRestore();
+		}
 	});
 
 	fcTest.prop([validVisibilityArb])('migrateVisibility is idempotent for valid values', (visibility) => {
