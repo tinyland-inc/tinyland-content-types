@@ -45,8 +45,8 @@ export type LegacyRBACVisibility = 'public' | 'members' | 'admin' | 'private';
 
 
 
-export function migrateVisibility(legacy: string | undefined): ContentVisibility {
-	if (!legacy) return 'public';
+export function migrateVisibility(legacy: string | null | undefined): ContentVisibility {
+	if (!legacy) return 'private';
 
 	const normalized = legacy.toLowerCase();
 

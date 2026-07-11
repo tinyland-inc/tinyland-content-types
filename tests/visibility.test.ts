@@ -28,12 +28,16 @@ const urlArb = fc.webUrl();
 
 
 describe('migrateVisibility', () => {
-	it('should return "public" for undefined input', () => {
-		expect(migrateVisibility(undefined)).toBe('public');
+	it('should fail closed to "private" for undefined input', () => {
+		expect(migrateVisibility(undefined)).toBe('private');
 	});
 
-	it('should return "public" for empty string', () => {
-		expect(migrateVisibility('')).toBe('public');
+	it('should fail closed to "private" for null input', () => {
+		expect(migrateVisibility(null)).toBe('private');
+	});
+
+	it('should fail closed to "private" for an empty string', () => {
+		expect(migrateVisibility('')).toBe('private');
 	});
 
 	it('should map "public" to "public"', () => {
