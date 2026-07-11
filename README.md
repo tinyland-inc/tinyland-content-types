@@ -13,3 +13,8 @@ pnpm add @tummycrypt/tinyland-content-types
 - `.` — core content types
 - `./visibility` — visibility and access control types
 - `./activitypub` — ActivityPub federation types
+
+## Visibility migration
+
+`migrateVisibility` preserves the legacy mappings used by the package. Missing
+(`undefined` or `null`) and empty-string inputs fail closed to `private`.
