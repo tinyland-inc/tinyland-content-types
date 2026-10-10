@@ -120,8 +120,12 @@ export interface EventContent {
 		categories?: string[];
 		tags?: string[];
 		calendarUid?: string;
+		collection?: string;
 		excerpt?: string;
 		contactEmail?: string;
+		contactPhone?: string;
+		currentAttendees?: number;
+		eventType?: string;
 		recurrence?: string;
 		organizer?: string | { name: string; email?: string };
 		location?: string | { name: string; address?: string };

@@ -1,10 +1,11 @@
 {
   "name": "@tummycrypt/tinyland-content-types",
-  "version": "0.3.1",
+  "version": "1.0.0",
+  "private": true,
   "packageManager": "pnpm@10.13.1",
   "description": "Shared content type definitions for content management and ActivityPub federation",
   "type": "module",
-  "license": "Zlib AND LicenseRef-Tinyland-Proprietary",
+  "license": "(Zlib AND LicenseRef-Tinyland-Proprietary)",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -28,7 +29,9 @@
   },
   "files": [
     "dist",
-    "LICENSE"
+    "!dist/**/*.test.*",
+    "README.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "tsc",
@@ -37,30 +40,26 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "check:package": "publint",
-    "prepublishOnly": "pnpm build && pnpm check:package"
+    "check:package": "publint"
   },
   "devDependencies": {
-    "@fast-check/vitest": "^0.2.4",
-    "@types/node": "^24.6.0",
-    "fast-check": "^4.3.0",
-    "typescript": "^5.0.0",
-    "publint": "^0.3.18",
-    "vitest": "^4.0.0"
+    "@fast-check/vitest": "^0.5.0",
+    "@types/node": "^22.0.0",
+    "fast-check": "^4.10.2",
+    "publint": "^0.3.25",
+    "typescript": "7.0.2",
+    "vite": "8.3.3",
+    "vitest": "5.0.3"
   },
   "engines": {
     "node": ">=22.0.0"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
-  },
-  "homepage": "https://github.com/tinyland-inc/tinyland-content-types",
+  "homepage": "https://github.com/xoxd-ai/tinyland-content-types",
   "bugs": {
-    "url": "https://github.com/tinyland-inc/tinyland-content-types/issues"
+    "url": "https://github.com/xoxd-ai/tinyland-content-types/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tinyland-inc/tinyland-content-types.git"
+    "url": "git+https://github.com/xoxd-ai/tinyland-content-types.git"
   }
 }
