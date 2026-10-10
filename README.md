@@ -2,10 +2,22 @@
 
 Shared content type definitions for content management and ActivityPub federation.
 
-## Install
+## Consuming (Bazel only)
 
-```sh
-pnpm add @tummycrypt/tinyland-content-types
+This package is not published to npm. Consume it from
+[xoxd-ai/bazel-registry](https://github.com/xoxd-ai/bazel-registry):
+
+```starlark
+bazel_dep(name = "tummycrypt_tinyland_content_types", version = "1.0.0")
+```
+
+```starlark
+load("@aspect_rules_js//npm:defs.bzl", "npm_link_package")
+
+npm_link_package(
+    name = "node_modules/@tummycrypt/tinyland-content-types",
+    src = "@tummycrypt_tinyland_content_types//:pkg",
+)
 ```
 
 ## Exports
@@ -13,6 +25,7 @@ pnpm add @tummycrypt/tinyland-content-types
 - `.` — core content types
 - `./visibility` — visibility and access control types
 - `./activitypub` — ActivityPub federation types
+- `./scheduling` — scheduling reference types and helpers
 
 ## Visibility semantics
 
@@ -42,3 +55,14 @@ The same contract holds at the other runtime edges:
 
 `tests/visibility.test.ts` carries the mapping table as the executable
 specification.
+
+## Development
+
+```sh
+pnpm install
+pnpm typecheck
+pnpm test
+bazel build //:pkg && bazel test //...
+```
+
+TypeScript 7.0.2, vitest 5.0.3 and vite 8.3.3 are pinned exactly. See CHANGELOG.md.
